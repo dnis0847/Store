@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Список доступных продуктов</h1>
+
+    <div class="card_products">
+      {% for product in available_products %}
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Товар" class="product-image">
+          <div class="product-info">
+              <a href="{{ product.get_absolute_url }}">
+                <h2 class="product-title">{{ product.title }}</h2>
+              </a>
+              <p class="product-meta">Артикул: {{ product.article }}</p>
+              <p class="product-meta">Производитель: {{ product.brand }}</p>
+              <p class="product-description">{{ product.description }}</p>
+              <div class="product-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span>({{ product.rating }}/5)</span>
+              </div>
+              <p class="product-stock in-stock">В наличии: {{ product.quantity }} шт.</p>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+{% endblock %}
+

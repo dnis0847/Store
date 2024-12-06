@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Поиск товара:</h1>
+
+    {% if query %}
+        <h2>Products containing "{{ query }}"</h2>
+        <h3>
+            {% with results.count as total_results %}
+                Found: {{ total_results }} result{{ total_results|pluralize:"s" }}
+            {% endwith %}
+        </h3>
+        {% for product in results %}
+            <h4>
+                <a href="{{ product.get_absolute_url }}">
+                    {{ product.title }}
+                </a>
+            </h4>
+            {{ product.body|truncatechars_html:12 }}
+        {% empty %}
+            <p>There are no results for your query.</p>
+        {% endfor %}
+        <p>
+            <a href="{% url 'Store:product_search_view' %}">Search again</a>
+        </p>
+    {% else %}
+        <form method="get" class="search_product_form">
+            {{ form.as_p }}
+            <input type="submit" value="Search">
+        </form>
+    {% endif %}
+{% endblock %}

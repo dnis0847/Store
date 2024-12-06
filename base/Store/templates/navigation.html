@@ -1,0 +1,9 @@
+{% block navigation %}
+    <nav class="navigation">
+        <a href="{% url "Store:product_list" %}">Главная</a>
+        <a href="{% url "Store:product_list" %}">Store</a>
+        <a href="{% url "Store:add_product" %}">Добавить товар</a>
+        <a href="{% url "Store:product_search_view" %}">Найти товар</a>
+    </nav>
+{% endblock%}
+

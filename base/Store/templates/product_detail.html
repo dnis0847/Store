@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="product-details">
+    <div class="product-header">
+        <img src="https://via.placeholder.com/300" alt="{{ product.title }}" class="product-image">
+        <div class="product-info">
+            <h1 class="product-title">{{ product.title }}</h1>
+            <p class="product-meta">Артикул: {{ product.article }}</p>
+            <p class="product-meta">Производитель: {{ product.brand }}</p>
+            <div class="product-rating">
+                <span class="stars">★★★★☆</span>
+                <span>({{ product.rating }}/5) 120 отзывов</span>
+            </div>
+            <p class="product-stock in-stock">В наличии: {{ product.quantity }}.</p>
+        </div>
+    </div>
+    <div class="product-description">
+        <h2>Описание товара</h2>
+        <p>{{ product.description }}</p>
+    </div>
+</div>
+
+
+{% endblock %}
